@@ -19,6 +19,8 @@ public class Sudoku {
     
     public boolean[] candidates(int row, int column) {
         boolean[] candidate = new boolean[10];
+        Arrays.fill(candidate, false);
+        
         if (board[row][column] == 0) {        
             numCheck: for (int i = 1; i < 10; i++) {
                 // Check corresponding column
@@ -39,41 +41,108 @@ public class Sudoku {
                 if (row >= 1 && row <= 3) {
                     // Box 1
                     if (column >= 1 && column <= 3) {
+                        for (int j = 1; j < 4; j++) {
+                            for (int k = 1; k < 4; k++) {
+                                if (board[j][k] == i) {
+                                    continue numCheck;
+                                }
+                            }
+                        }
                     }
                     
                     // Box 2
                     if (column >= 4 && column <= 6) {
+                        for (int j = 1; j < 4; j++) {
+                            for (int k = 4; k < 7; k++) {
+                                if (board[j][k] == i) {
+                                    continue numCheck;
+                                }
+                            }
+                        }
+                        
                     }
                     
                     // Box 3
                     if (column >= 7 && column <= 9) {
+                        for (int j = 1; j < 4; j++) {
+                            for (int k = 7; k < 10; k++) {
+                                if (board[j][k] == i) {
+                                    continue numCheck;
+                                }
+                            }
+                        }
                     }
+                    
                 } else if (row >= 4 && row <= 6) {
                     // Box 4
                     if (column >= 1 && column <= 3) {
+                        for (int j = 4; j < 7; j++) {
+                            for (int k = 1; k < 4; k++) {
+                                if (board[j][k] == i) {
+                                    continue numCheck;
+                                }
+                            }
+                        }
                     }
                     
                     // Box 5
                     if (column >= 4 && column <= 6) {
+                        for (int j = 4; j < 7; j++) {
+                            for (int k = 4; k < 7; k++) {
+                                if (board[j][k] == i) {
+                                    continue numCheck;
+                                }
+                            }
+                        }
                     }
                     
                     // Box 6
                     if (column >= 7 && column <= 9) {
+                        for (int j = 4; j < 7; j++) {
+                            for (int k = 7; k < 10; k++) {
+                                if (board[j][k] == i) {
+                                    continue numCheck;
+                                }
+                            }
+                        }
                     }
                 } else if (row >= 7 && row <= 9) {
-                    // Box 4
+                    // Box 7
                     if (column >= 1 && column <= 3) {
+                        for (int j = 7; j < 10; j++) {
+                            for (int k = 1; k < 4; k++) {
+                                if (board[j][k] == i) {
+                                    continue numCheck;
+                                }
+                            }
+                        }                        
                     }
                     
-                    // Box 5
+                    // Box 8
                     if (column >= 4 && column <= 6) {
+                        for (int j = 7; j < 10; j++) {
+                            for (int k = 4; k < 7; k++) {
+                                if (board[j][k] == i) {
+                                    continue numCheck;
+                                }
+                            }
+                        }
                     }
                     
-                    // Box 6
+                    // Box 9
                     if (column >= 7 && column <= 9) {
+                        for (int j = 7; j < 10; j++) {
+                            for (int k = 7; k < 10; k++) {
+                                if (board[j][k] == i) {
+                                    continue numCheck;
+                                }
+                            }
+                        }
                     }
                 }
-                    
+                
+                // If the number is not present in any subunit
+                candidate[i] = true;
             }
         }
         return candidate;
