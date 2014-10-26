@@ -88,19 +88,227 @@ public class Sudoku {
                     return false;
                 
                 // Board is not solved if there is a similar number in a row
-                for (int k = j; k < 9; k++) {
-                    if (board[i][j] == board[i][k])
-                        return false;
+                if (j != 8) {
+                    for (int k = j + 1; k < 9; k++) {
+                        if (board[i][j] == board[i][k])
+                            return false;
+                    }
                 }
                 
                 // Board is not solved if there is a similar number in column
-                for (int k = i; k < 9; k++) {
-                    if (board[j][i] == board[k][i])
-                        return false;
+                if (i != 8) {
+                    for (int k = i + 1; k < 9; k++) {
+                        if (board[j][i] == board[k][i])
+                            return false;
+                    }
                 }
             }
         }
         
+        // Board is not solved if there is a similar number in a box
+        for (int row = 0; row < 9; row++) {
+            for (int column = 0; column < 9; column++) {
+                if (row >= 0 && row <= 2) {
+                    // Box 1
+                    if (column >= 0 && column <= 2) {
+                        for (int check = row; check < 3; check++) {
+                            if (check == row) {
+                                if (column != 2) {
+                                    for (int check2 = column + 1; check2 < 3; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                            else {
+                                if (column != 2) {
+                                    for (int check2 = column; check2 < 3; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Box 2
+                    if (column >= 3 && column <= 5) {
+                        for (int check = row; check < 3; check++) {
+                            if (check == row) {
+                                if (column != 5) {
+                                    for (int check2 = column + 1; check2 < 6; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                            else {
+                                if (column != 5) {
+                                    for (int check2 = column; check2 < 6; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Box 3
+                    if (column >= 6 && column <= 8) {
+                        for (int check = row; check < 3; check++) {
+                            if (check == row) {
+                                if (column != 8) {
+                                    for (int check2 = column + 1; check2 < 9; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                            else {
+                                if (column != 8) {
+                                    for (int check2 = column; check2 < 9; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else if (row >= 3 && row <= 5) {
+                    // Box 4
+                    if (column >= 0 && column <= 2) {
+                        for (int check = row; check < 6; check++) {
+                            if (check == row) {
+                                if (column != 2) {
+                                    for (int check2 = column + 1; check2 < 3; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                            else {
+                                if (column != 2) {
+                                    for (int check2 = column; check2 < 3; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Box 5
+                    if (column >= 3 && column <= 5) {
+                        for (int check = row; check < 6; check++) {
+                            if (check == row) {
+                                if (column != 5) {
+                                    for (int check2 = column + 1; check2 < 6; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                            else {
+                                if (column != 5) {
+                                    for (int check2 = column; check2 < 6; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Box 6
+                    if (column >= 6 && column <= 8) {
+                        for (int check = row; check < 6; check++) {
+                            if (check == row) {
+                                if (column != 8) {
+                                    for (int check2 = column + 1; check2 < 9; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                            else {
+                                if (column != 8) {
+                                    for (int check2 = column; check2 < 9; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else if (row >= 6 && row <= 8) {
+                    // Box 4
+                    if (column >= 0 && column <= 2) {
+                        for (int check = row; check < 9; check++) {
+                            if (check == row) {
+                                if (column != 2) {
+                                    for (int check2 = column + 1; check2 < 3; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                            else {
+                                if (column != 2) {
+                                    for (int check2 = column; check2 < 3; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Box 5
+                    if (column >= 3 && column <= 5) {
+                        for (int check = row; check < 9; check++) {
+                            if (check == row) {
+                                if (column != 5) {
+                                    for (int check2 = column + 1; check2 < 6; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                            else {
+                                if (column != 5) {
+                                    for (int check2 = column; check2 < 6; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Box 6
+                    if (column >= 6 && column <= 8) {
+                        for (int check = row; check < 9; check++) {
+                            if (check == row) {
+                                if (column != 8) {
+                                    for (int check2 = column + 1; check2 < 9; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                            else {
+                                if (column != 8) {
+                                    for (int check2 = column; check2 < 9; check2++) {
+                                        if (board[row][column] == board[check][check2])
+                                            return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+        }
         
         
         
