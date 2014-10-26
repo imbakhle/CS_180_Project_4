@@ -310,7 +310,7 @@ public class Sudoku {
                         }
                     }
                 } else if (row >= 6 && row <= 8) {
-                    // Box 4
+                    // Box 7
                     if (column >= 0 && column <= 2) {
                         for (int check = row; check < 9; check++) {
                             if (check == row) {
@@ -332,7 +332,7 @@ public class Sudoku {
                         }
                     }
                     
-                    // Box 5
+                    // Box 8
                     if (column >= 3 && column <= 5) {
                         for (int check = row; check < 9; check++) {
                             if (check == row) {
@@ -354,7 +354,7 @@ public class Sudoku {
                         }
                     }
                     
-                    // Box 6
+                    // Box 9
                     if (column >= 6 && column <= 8) {
                         for (int check = row; check < 9; check++) {
                             if (check == row) {
@@ -378,9 +378,6 @@ public class Sudoku {
                 }
             } 
         }
-        
-        
-        
         return true;
     }
     
