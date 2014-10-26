@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Sudoku {
     
     private int[][] board;
@@ -10,8 +12,12 @@ public class Sudoku {
         this.board = board;
     }
     
+    // Returns a copy of the current state of the board--Done
     public int[][] board() {
-        return board;
+        int[][] copyboard = new int[9][9];
+        
+      
+        return Arrays.copyOf(board, board.length);
     }
     
     public boolean[] candidates(int row, int column) {
