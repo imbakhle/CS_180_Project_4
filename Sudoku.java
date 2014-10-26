@@ -432,4 +432,17 @@ public class Sudoku {
         board()[8][8]);        
         System.out.println("  +-------+-------+-------+");        
     }
+    
+    public static void main(String[] args) {
+        int[][] puzzle = new int[9][9];
+        
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                puzzle[i][j] = args[0].charAt(9 * i + j);
+            }
+        }
+        
+        Sudoku s = new Sudoku(puzzle);
+        s.printBoard();
+    }
 }
