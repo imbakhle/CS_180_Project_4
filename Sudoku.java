@@ -401,14 +401,15 @@ public class Sudoku {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 options = candidates(i, j);
+                countTrue = 0;
                 for (int h = 1; h < 10; h++) {
                     if (options[h] == true) {
                         countTrue++;
                         locationTrue = h;
                     }
-                    if (countTrue == 1) 
-                        board[i][j] = locationTrue;
                 }
+                if (countTrue == 1) 
+                    board[i][j] = locationTrue;
             }
         }
         
@@ -581,9 +582,12 @@ public class Sudoku {
         
         Sudoku s = new Sudoku(puzzle);
         s.printBoard();
+        /*for (int i = 1; i < 10; i++)
+            System.out.println(s.candidates(1,0)[i]);*/
         s.solve();
         System.out.println("\n\tSolved Board\n");
         s.printBoard();
-        System.out.println(s.isSolved());
+        
+        //System.out.println(s.isSolved());
     }
 }
