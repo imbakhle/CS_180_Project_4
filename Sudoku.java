@@ -159,16 +159,21 @@ public class Sudoku {
                 // Board is not solved if there is a similar number in a row
                 if (j != 8) {
                     for (int k = j + 1; k < 9; k++) {
-                        if (board[i][j] == board[i][k])
+                        if (board[i][j] == board[i][k]) {
+                            System.out.println("row");
                             return false;
+                        }
+                        
                     }
                 }
                 
                 // Board is not solved if there is a similar number in column
                 if (i != 8) {
                     for (int k = i + 1; k < 9; k++) {
-                        if (board[j][i] == board[k][i])
+                        if (board[i][j] == board[k][j]) {
+                            System.out.println("column");
                             return false;
+                        }
                     }
                 }
             }
@@ -441,6 +446,6 @@ public class Sudoku {
         
         Sudoku s = new Sudoku(puzzle);
         s.printBoard();
-        //System.out.println(s.isSolved());
+        System.out.println(s.isSolved());
     }
 }
