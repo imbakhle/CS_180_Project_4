@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Sudoku {
     
@@ -394,14 +395,14 @@ public class Sudoku {
             return;
         
         // Naked Singles Method
-        boolean[] candidates;
+        boolean[] options;
         int countTrue = 0;
         int locationTrue = 0;
-        for (int i = 1; i < 10; i++) {
-            for (int j = 1; j < 10; j++) {
-                candidates = candidates(i, j);
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                options = candidates(i, j);
                 for (int h = 1; h < 10; h++) {
-                    if (candidates[h] == true) {
+                    if (options[h] == true) {
                         countTrue++;
                         locationTrue = h;
                     }
@@ -410,9 +411,15 @@ public class Sudoku {
                 }
             }
         }
+        
+        if (isSolved() == true)
+            return;
+        
+        // Hidden Singles Method
+        ArrayList<Boolean> hiddenSingles = new ArrayList<Boolean>();
     }
     
-    // Creates a nice on-screen view of the current board--DONE
+    // Creates a nice on-screen view of the current board
     public void printBoard() {
         String line;
         int num;
