@@ -387,7 +387,9 @@ public class Sudoku {
     }
     
     public void solve() {
-       
+        if (isSolved() == true)
+            return;
+        
     }
     
     // Creates a nice on-screen view of the current board--DONE
@@ -445,6 +447,9 @@ public class Sudoku {
         }
         
         Sudoku s = new Sudoku(puzzle);
+        s.printBoard();
+        s.solve();
+        System.out.println("\n\tSolved Board\n");
         s.printBoard();
         System.out.println(s.isSolved());
     }
