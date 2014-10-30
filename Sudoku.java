@@ -391,10 +391,17 @@ public class Sudoku {
     }
     
     public void solve() {
-        if (isSolved() == true)
-            return;
+        boolean check = false;
+        while (isSolved() == true) {
+        }
+        do {
+            check = nakedSingles();  
+        } while(check == true);
         
-        // Naked Singles Method
+    }
+        
+    // Naked Singles Method
+    public boolean nakedSingles() {
         boolean[] options;
         int countTrue = 0;
         int locationTrue = 0;
@@ -408,16 +415,13 @@ public class Sudoku {
                         locationTrue = h;
                     }
                 }
-                if (countTrue == 1) 
+                if (countTrue == 1) {
                     board[i][j] = locationTrue;
+                    return true;
+                }
             }
         }
-        
-        if (isSolved() == true)
-            return;
-        
-        // Hidden Singles Method
-        ArrayList<Boolean> hiddenSingles = new ArrayList<Boolean>();
+        return false;
     }
     
     // Creates a nice on-screen view of the current board
