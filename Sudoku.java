@@ -6,6 +6,9 @@ public class Sudoku {
     
     public Sudoku () {
         board = new int[9][9];
+        for (int i = 0; i < 9; i++) {
+            Arrays.fill(board[i], 0);
+        }
     }
     
     public Sudoku (int[][] board) {
