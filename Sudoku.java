@@ -390,6 +390,23 @@ public class Sudoku {
         if (isSolved() == true)
             return;
         
+        // Naked Singles Method
+        boolean[] candidates;
+        int countTrue = 0;
+        int locationTrue = 0;
+        for (int i = 1; i < 10; i++) {
+            for (int j = 1; j < 10; j++) {
+                candidates = candidates(i, j);
+                for (int h = 1; h < 10; h++) {
+                    if (candidates[h] == true) {
+                        countTrue++;
+                        locationTrue = h;
+                    }
+                    if (countTrue == 1) 
+                        board[i][j] = locationTrue;
+                }
+            }
+        }
     }
     
     // Creates a nice on-screen view of the current board--DONE
