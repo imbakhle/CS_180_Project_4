@@ -464,6 +464,9 @@ public class Sudoku {
         }
         System.out.println(line);
         
+        
+        System.out.println("  +-------+-------+-------+"); 
+        
         // D
         line = "D | ";
         for (int i = 0; i < 3; i++) {
@@ -508,6 +511,9 @@ public class Sudoku {
             line += "| ";
         }
         System.out.println(line);
+        
+        
+        System.out.println("  +-------+-------+-------+"); 
         
         // G
         line = "G | ";
