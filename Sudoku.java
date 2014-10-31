@@ -454,10 +454,30 @@ public class Sudoku {
                    return true;
                 }
             }
+            
+            // Checks column
+            for (int j = 0; j < 9; j++) {
+                temp = candidates(j, i);
+                candidates[j] = temp;                
+            }
+            
+             for (int h = 1; h < 10; h++) {
+                countTrue = 0;
+                for (int k = 0; k < 9; k++) {
+                    if (candidates[k][h] == true) {
+                        countTrue++;
+                        locationTruerow = k;
+                        locationTrueColumn = h;
+                    }
+                }
+                if (countTrue == 1) {
+                   board[locationTruerow][i] = h;
+                   return true;
+                }
+            }
+               
         }
-        
-        return false;
-        
+        return false;   
     }
     
     // Creates a nice on-screen view of the current board
