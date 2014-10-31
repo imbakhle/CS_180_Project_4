@@ -391,13 +391,8 @@ public class Sudoku {
     }
     
     public void solve() {
-        boolean check = false;
-        while (isSolved() == true) {
-        }
-        do {
-            check = nakedSingles();  
-        } while(check == true);
-        
+        while (!isSolved() && (nakedSingles() || hiddenSingles()))   
+        return; 
     }
         
     // Naked Singles Method
@@ -422,6 +417,47 @@ public class Sudoku {
             }
         }
         return false;
+    }
+    
+    // Hidden Singles Method
+    public boolean hiddenSingles() {
+        boolean[][] candidates = new boolean[10][10];
+        boolean[] temp;
+        int countTrue = 0;
+        int locationTruerow = 0;
+        int locationTrueColumn = 0;
+        
+        // Checks row 
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                temp = candidates(i, j);
+                candidates[j] = temp;                
+            }
+            
+           // shows candidates matrix
+           /* for (int j = 0; j<10; j++){
+                for (int z = 0; z<10; z++) 
+                System.out.print(candidates[j][z]);
+                System.out.println();
+            }*/
+            for (int h = 1; h < 10; h++) {
+                countTrue = 0;
+                for (int k = 0; k < 9; k++) {
+                    if (candidates[k][h] == true) {
+                        countTrue++;
+                        locationTruerow = k;
+                        locationTrueColumn = h;
+                    }
+                }
+                if (countTrue == 1) {
+                   board[i][locationTruerow] = h;
+                   return true;
+                }
+            }
+        }
+        
+        return false;
+        
     }
     
     // Creates a nice on-screen view of the current board
