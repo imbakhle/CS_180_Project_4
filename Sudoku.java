@@ -391,8 +391,8 @@ public class Sudoku {
     }
     
     public void solve() {
-        while (!isSolved() && (nakedSingles() || hiddenSingles()))   
-        return; 
+        while (!isSolved() && (nakedSingles() || hiddenSingles())) {}   
+         
     }
         
     // Naked Singles Method
@@ -477,6 +477,303 @@ public class Sudoku {
             }
                
         }
+        
+        // Checks the box
+        // Box 1
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                temp = candidates(i, j);
+                if (i == 0)
+                    candidates[j] = temp;
+                else if (i == 1)
+                    candidates[j + 3] = temp;
+                else
+                    candidates[j + 6] = temp;
+            }   
+        }
+        
+        for (int h = 1; h < 10; h++) {
+            countTrue = 0;
+            for (int k = 0; k < 9; k++) {
+                if (candidates[k][h] == true) {
+                    countTrue++;
+                    locationTruerow = k;
+                    locationTrueColumn = h;
+                }
+            }
+            if (countTrue == 1) {
+                if (locationTruerow < 3)
+                    board[0][locationTruerow] = h;
+                else if (locationTruerow < 6)
+                    board[1][locationTruerow - 3] = h;
+                else
+                    board[2][locationTruerow - 6] = h;
+                return true;
+            }
+        }
+         // Box 2
+        for (int i = 0; i < 3; i++) {
+            for (int j = 3; j < 6; j++) {
+                temp = candidates(i, j);
+                if (i == 0)
+                    candidates[j - 3] = temp;
+                else if (i == 1)
+                    candidates[j] = temp;
+                else
+                    candidates[j + 3] = temp;
+            }   
+        }
+        
+        for (int h = 1; h < 10; h++) {
+            countTrue = 0;
+            for (int k = 0; k < 9; k++) {
+                if (candidates[k][h] == true) {
+                    countTrue++;
+                    locationTruerow = k;
+                    locationTrueColumn = h;
+                }
+            }
+            if (countTrue == 1) {
+                if (locationTruerow < 3)
+                    board[0][locationTruerow + 3] = h;
+                else if (locationTruerow < 6)
+                    board[1][locationTruerow] = h;
+                else 
+                    board[2][locationTruerow - 3] = h;
+                return true;
+            }
+        }
+        
+        // Box 3
+        for (int i = 0; i < 3; i++) {
+            for (int j = 6; j < 9; j++) {
+                temp = candidates(i, j);
+                if (i == 0)
+                    candidates[j - 6] = temp;
+                else if (i == 1)
+                    candidates[j - 3] = temp;
+                else
+                    candidates[j] = temp;
+            }   
+        }
+        
+        for (int h = 1; h < 10; h++) {
+            countTrue = 0;
+            for (int k = 0; k < 9; k++) {
+                if (candidates[k][h] == true) {
+                    countTrue++;
+                    locationTruerow = k;
+                    locationTrueColumn = h;
+                }
+            }
+            if (countTrue == 1) {
+                if (locationTruerow < 3)
+                    board[0][locationTruerow + 6] = h;
+                else if (locationTruerow < 6)
+                    board[1][locationTruerow + 3] = h;
+                else 
+                    board[2][locationTruerow] = h;
+                return true;
+            }
+        }
+        
+        // Box 4
+        for (int i = 3; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                temp = candidates(i, j);
+                if (i == 3)
+                    candidates[j] = temp;
+                else if (i == 4)
+                    candidates[j + 3] = temp;
+                else
+                    candidates[j + 6] = temp;
+            }   
+        }
+        
+        for (int h = 1; h < 10; h++) {
+            countTrue = 0;
+            for (int k = 0; k < 9; k++) {
+                if (candidates[k][h] == true) {
+                    countTrue++;
+                    locationTruerow = k;
+                    locationTrueColumn = h;
+                }
+            }
+            if (countTrue == 1) {
+                if (locationTruerow < 3)
+                    board[3][locationTruerow] = h;
+                else if (locationTruerow < 6)
+                    board[4][locationTruerow - 3] = h;
+                else 
+                    board[5][locationTruerow - 6] = h;
+                return true;
+            }
+        }
+        // Box 5
+        for (int i = 3; i < 6; i++) {
+            for (int j = 3; j < 6; j++) {
+                temp = candidates(i, j);
+                if (i == 3)
+                    candidates[j - 3] = temp;
+                else if (i == 4)
+                    candidates[j] = temp;
+                else
+                    candidates[j + 3] = temp;
+            }   
+        }
+        
+        for (int h = 1; h < 10; h++) {
+            countTrue = 0;
+            for (int k = 0; k < 9; k++) {
+                if (candidates[k][h] == true) {
+                    countTrue++;
+                    locationTruerow = k;
+                    locationTrueColumn = h;
+                }
+            }
+            if (countTrue == 1) {
+                if (locationTruerow < 3)
+                    board[3][locationTruerow + 3] = h;
+                else if (locationTruerow < 6)
+                    board[4][locationTruerow] = h;
+                else 
+                    board[5][locationTruerow - 3] = h;
+                return true;
+            }
+        }
+        
+         // Box 6
+        for (int i = 3; i < 6; i++) {
+            for (int j = 6; j < 9; j++) {
+                temp = candidates(i, j);
+                if (i == 3)
+                    candidates[j - 6] = temp;
+                else if (i == 4)
+                    candidates[j - 3] = temp;
+                else
+                    candidates[j] = temp;
+            }   
+        }
+        
+        for (int h = 1; h < 10; h++) {
+            countTrue = 0;
+            for (int k = 0; k < 9; k++) {
+                if (candidates[k][h] == true) {
+                    countTrue++;
+                    locationTruerow = k;
+                    locationTrueColumn = h;
+                }
+            }
+            if (countTrue == 1) {
+                if (locationTruerow < 3)
+                    board[3][locationTruerow + 6] = h;
+                else if (locationTruerow < 6)
+                    board[4][locationTruerow + 3] = h;
+                else 
+                    board[5][locationTruerow] = h;
+                return true;
+            }
+        }
+        
+         // Box 7
+        for (int i = 6; i < 9; i++) {
+            for (int j = 0; j < 3; j++) {
+                temp = candidates(i, j);
+                if (i == 6)
+                    candidates[j] = temp;
+                else if (i == 7)
+                    candidates[j + 3] = temp;
+                else
+                    candidates[j + 6] = temp;
+            }   
+        }
+        
+        for (int h = 1; h < 10; h++) {
+            countTrue = 0;
+            for (int k = 0; k < 9; k++) {
+                if (candidates[k][h] == true) {
+                    countTrue++;
+                    locationTruerow = k;
+                    locationTrueColumn = h;
+                }
+            }
+            if (countTrue == 1) {
+                if (locationTruerow < 3)
+                    board[6][locationTruerow] = h;
+                else if (locationTruerow < 6)
+                    board[7][locationTruerow - 3] = h;
+                else 
+                    board[8][locationTruerow - 6] = h;
+                return true;
+            }
+        }
+        
+        // Box 8
+        for (int i = 6; i < 9; i++) {
+            for (int j = 3; j < 6; j++) {
+                temp = candidates(i, j);
+                if (i == 6)
+                    candidates[j - 3] = temp;
+                else if (i == 7)
+                    candidates[j] = temp;
+                else
+                    candidates[j + 3] = temp;
+            }   
+        }
+        
+        for (int h = 1; h < 10; h++) {
+            countTrue = 0;
+            for (int k = 0; k < 9; k++) {
+                if (candidates[k][h] == true) {
+                    countTrue++;
+                    locationTruerow = k;
+                    locationTrueColumn = h;
+                }
+            }
+            if (countTrue == 1) {
+                if (locationTruerow < 3)
+                    board[6][locationTruerow + 3] = h;
+                else if (locationTruerow < 6)
+                    board[7][locationTruerow] = h;
+                else 
+                    board[8][locationTruerow - 3] = h;
+                return true;
+            }
+        }
+        
+        // Box 9
+        for (int i = 6; i < 9; i++) {
+            for (int j = 6; j < 9; j++) {
+                temp = candidates(i, j);
+                if (i == 6)
+                    candidates[j - 6] = temp;
+                else if (i == 7)
+                    candidates[j - 3] = temp;
+                else
+                    candidates[j] = temp;
+            }   
+        }
+        
+        for (int h = 1; h < 10; h++) {
+            countTrue = 0;
+            for (int k = 0; k < 9; k++) {
+                if (candidates[k][h] == true) {
+                    countTrue++;
+                    locationTruerow = k;
+                    locationTrueColumn = h;
+                }
+            }
+            if (countTrue == 1) {
+                if (locationTruerow < 3)
+                    board[6][locationTruerow + 6] = h;
+                else if (locationTruerow < 6)
+                    board[7][locationTruerow + 3] = h;
+                else 
+                    board[8][locationTruerow] = h;
+                return true;
+            }
+        }
+        
         return false;   
     }
     
