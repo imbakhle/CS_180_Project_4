@@ -939,12 +939,13 @@ public class Sudoku {
         
         Sudoku s = new Sudoku(puzzle);
         s.printBoard();
-        /*for (int i = 1; i < 10; i++)
-            System.out.println(s.candidates(1,0)[i]);*/
-        s.solve();
-        System.out.println("\n\tSolved Board\n");
-        s.printBoard();
         
-        //System.out.println(s.isSolved());
+        s.solve();
+        if (s.isSolved()) {
+            System.out.println("\n\tSolved Board\n");
+            s.printBoard();
+        }
+        
+
     }
 }
