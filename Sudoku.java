@@ -26,10 +26,11 @@ public class Sudoku {
         Arrays.fill(candidate, false);
         
         if (board[row][column] == 0) {        
-            numCheck: for (int i = 1; i < 10; i++) {
+        numCheck: 
+            for (int i = 1; i < 10; i++) {
                 // Check corresponding column
                 for (int j = 0; j < 9; j++) {
-                    if (board[j][column] == i){
+                    if (board[j][column] == i) {
                         continue numCheck;
                     }
                 }
@@ -391,7 +392,8 @@ public class Sudoku {
     }
     
     public void solve() {
-        while (!isSolved() && (nakedSingles() || hiddenSingles())) {}   
+        while (!isSolved() && (nakedSingles() || hiddenSingles())) {
+        }   
          
     }
         
@@ -450,8 +452,8 @@ public class Sudoku {
                     }
                 }
                 if (countTrue == 1) {
-                   board[i][locationTruerow] = h;
-                   return true;
+                    board[i][locationTruerow] = h;
+                    return true;
                 }
             }
             
@@ -461,7 +463,7 @@ public class Sudoku {
                 candidates[j] = temp;                
             }
             
-             for (int h = 1; h < 10; h++) {
+            for (int h = 1; h < 10; h++) {
                 countTrue = 0;
                 for (int k = 0; k < 9; k++) {
                     if (candidates[k][h] == true) {
@@ -471,8 +473,8 @@ public class Sudoku {
                     }
                 }
                 if (countTrue == 1) {
-                   board[locationTruerow][i] = h;
-                   return true;
+                    board[locationTruerow][i] = h;
+                    return true;
                 }
             }
                
@@ -788,7 +790,7 @@ public class Sudoku {
         line = "A | ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                num = board()[0][3*i + j];
+                num = board()[0][3 * i + j];
                 if (num != 0) {
                     line += String.format("%d ", num);
                 } else {
@@ -803,7 +805,7 @@ public class Sudoku {
         line = "B | ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                num = board()[1][3*i + j];
+                num = board()[1][3 * i + j];
                 if (num != 0) {
                     line += String.format("%d ", num);
                 } else {
@@ -818,7 +820,7 @@ public class Sudoku {
         line = "C | ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                num = board()[2][3*i + j];
+                num = board()[2][3 * i + j];
                 if (num != 0) {
                     line += String.format("%d ", num);
                 } else {
@@ -836,7 +838,7 @@ public class Sudoku {
         line = "D | ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                num = board()[3][3*i + j];
+                num = board()[3][3 * i + j];
                 if (num != 0) {
                     line += String.format("%d ", num);
                 } else {
@@ -851,7 +853,7 @@ public class Sudoku {
         line = "E | ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                num = board()[4][3*i + j];
+                num = board()[4][3 * i + j];
                 if (num != 0) {
                     line += String.format("%d ", num);
                 } else {
@@ -866,7 +868,7 @@ public class Sudoku {
         line = "F | ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                num = board()[5][3*i + j];
+                num = board()[5][3 * i + j];
                 if (num != 0) {
                     line += String.format("%d ", num);
                 } else {
@@ -884,7 +886,7 @@ public class Sudoku {
         line = "G | ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                num = board()[6][3*i + j];
+                num = board()[6][3 * i + j];
                 if (num != 0) {
                     line += String.format("%d ", num);
                 } else {
@@ -899,7 +901,7 @@ public class Sudoku {
         line = "H | ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                num = board()[7][3*i + j];
+                num = board()[7][3 * i + j];
                 if (num != 0) {
                     line += String.format("%d ", num);
                 } else {
@@ -914,7 +916,7 @@ public class Sudoku {
         line = "I | ";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                num = board()[8][3*i + j];
+                num = board()[8][3 * i + j];
                 if (num != 0) {
                     line += String.format("%d ", num);
                 } else {
@@ -945,7 +947,8 @@ public class Sudoku {
             System.out.println("\n\tSolved Board\n");
             s.printBoard();
         }
-        
+        else
+            System.out.println("\nBoard Could Not Be Solved By This Solver\n");
 
     }
 }
